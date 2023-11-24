@@ -1,0 +1,15 @@
+{
+  "name": "download_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "download_ctr.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "util": "^0.12.5"
+  }
+}
