@@ -1,6 +1,5 @@
 'use strict';
 
-const { exec } = require('node:child_process');
 const { getImage } = require('./getImage.js');
 const util = require('util');
 
