@@ -1,31 +1,36 @@
 'use strict';
 
 const { exec } = require('node:child_process');
+const { getImage } = require('./getImage.js');
 const util = require('util');
-const { prepareStrings } = require('./read_list.js');
 
+
+
+const partsObjects = [
+	{ 
+		'brand': 'SAT',
+		'articul': 'HY0020',
+		'link': 'https://static.autotrade.su/nomenclature/wm/b/7d/7d5b2b4599.jpg' 
+	},
+];
 const filePath = ('image_list.txt');
+const brandName = '';
 
-const execPromise = util.promisify(exec);
 
-const image_request = async (url) => {
-	try {
-		const { stdout, stderr } = await execPromise(`wget ${url}`);
-		console.log(`stdout: ${stdout}`);
-		console.error(`stderror: ${stderr}`);
-	} catch (error) {
-		console.error(`exec error ${error}`);
+
+const downloadImages = async (imageList) => {
+	for(const partsObject of partsObjects) {
+		const { brand, articul, link } = partsObject;
+		getImage(brand, articul, link);
 	}
 };
 
 const main = async () => {
 	try {
-		const links = await prepareStrings(filePath);
-		console.log(links);
-		const promises = links.map(link => image_request(link));
-		await Promise.all(promises);
+	  const res = downloadImages(partsObjects);
+		console.log(res);
 	} catch(error) {
-			console.error(error);
+		console.error(error);
 	}
-}
+};
 main();
