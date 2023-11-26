@@ -1,8 +1,8 @@
 'use strict';
 
-const { getImage } = require('./getImage.js');
+const { getImage } = require('./lib/getImage.js');
 
-const filePath = require('./obj.json');
+const filePath = require('./url/obj.json');
 
 const downloadImages = async (imageList) => {
 	for(const partsObject of imageList) {
